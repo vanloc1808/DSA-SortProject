@@ -1,53 +1,75 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
+#include <string>
 #include "BasicSort.h"
 #include "DataGenerator.h"
 
 int main() {
     std::ifstream* fi = new std::ifstream[4];
-	fi[0].open("randomized_data_300000.txt");
-	fi[1].open("sorted_data_300000.txt");
-	fi[2].open("reversed_sorted_data_300000.txt");
-	fi[3].open("nearly_sorted_data_300000.txt");
-
     std::ofstream* fo = new std::ofstream[4];
-    fo[0].open("randomized_data_300000_result.txt");
-    fo[1].open("sorted_data_300000_result.txt");
-    fo[2].open("reversed_sorted_data_300000_result.txt");
-    fo[3].open("nearly_sorted_data_300000_result.txt");
 
-    int n = 300000;
+    int inputSize[] = {10000, 30000, 50000, 100000, 300000, 500000};
 
-	int* a = new int[n];
+    for (int i = 0; i < 6; i++) {
+        std::cout << "Part " << i << "\n";
+        //iterate through inputSize[]
+        int n = inputSize[i];
 
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < n; j++) {
-            fi[i] >> a[j];
+        std::string* s = new std::string[4];
+
+        s[0] = "randomized_data_" + std::to_string(n);
+        s[1] = "sorted_data_" + std::to_string(n);
+        s[2] = "reversed_sorted_data_" + std::to_string(n);
+        s[3] = "nearly_sorted_data_" + std::to_string(n);
+
+        for (int j = 0; j < 4; j++) {
+            fi[j].open(s[j] + ".txt");
+            fo[j].open(s[j] + "_result.txt");
         }
 
-        clock_t start = clock();
-        selectionSort(a, n);
-        clock_t end = clock();
-        double timeUsed = (double)(end - start) / CLOCKS_PER_SEC;
+        int* a = new int[n];
 
-        std::cout << "Time used for " << i << ": " << timeUsed << "\n";
+        for (int j = 0; j < 4; j++) {
+            for (int k = 0; k < n; k++) {
+                fi[j] >> a[k];
+            }
 
-        for (int j = 0; j < n; j++) {
-            fo[i] << a[j] << " ";
+            clock_t start = clock();
+
+            shakerSort(a, n);
+
+            clock_t end = clock();
+
+            double timeUsed = (double)(end - start) / CLOCKS_PER_SEC;
+
+            std::cout << "Time used for " << j << ": " << timeUsed << "\n";
+
+            for (int k = 0; k < n; k++) {
+                fo[j] << a[k] << " ";
+            }
+
+            fi[j].clear();
+            fi[j].seekg(0, std::ios::beg);
+
+            for (int k = 0; k < n; k++) {
+                fi[j] >> a[k];
+            }
+
+            long long cmp = shakerSortWithCounting(a, n);
+            
+            std::cout << "Comparisons used for " << j << ": " << cmp << "\n";
         }
 
-        for (int j = 0; j < n; j++) {
-            fi[i] >> a[j];
+        delete[] a;
+
+        for (int j = 0; j < 4; j++) {
+            fi[j].close();
+            fo[j].close();
         }
 
-        long long cmp = selectionSortWithCounting(a, n);
-        std::cout << "Comparison used for " << i << ": " << cmp << "\n";
-    }
-
-    for (int i = 0; i < 4; i++) {
-        fi[i].close();
-        fo[i].close();
+        delete[] s;
+        
     }
 
     delete[] fi;
