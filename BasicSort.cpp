@@ -1,13 +1,6 @@
 #include <iostream>
 #include "BasicSort.h"
 
-template<class T>
-void _swap(T& a, T& b) {
-    T temp = a;
-    a = b;
-    b = temp;
-}
-
 void selectionSort(int* a, int n) {
     for (int i = 0; i < n - 1; i++) {
         int minIndex = i;
@@ -150,6 +143,49 @@ long long shakerSortWithCounting(int* a, int n) {
         }
 
         left = k;
+    }
+
+    return cnt;
+}
+
+void shellSort(int* a, int n) {
+    int gap = n / 2;
+
+    while (gap > 0) {
+        for (int i = gap; i < n; i++) {
+            int j = i - gap;
+            int key = a[i];
+
+            while (j >= 0 && a[j] > key) {
+                a[j + gap] = a[j];
+                j -= gap;
+            }
+
+            a[j + gap] = key;
+        }
+
+        gap /= 2;
+    }
+}
+
+long long shellSortWithCounting(int* a, int n) {
+    long long cnt = 0;
+    int gap = n / 2;
+
+    while (++ cnt && gap > 0) {
+        for (int i = gap; ++cnt && i < n; i++) {
+            int j = i - gap;
+            int key = a[i];
+
+            while (++cnt && j >= 0 && ++cnt && a[j] > key) {
+                a[j + gap] = a[j];
+                j -= gap;
+            }
+
+            a[j + gap] = key;
+        }
+
+        gap /= 2;
     }
 
     return cnt;

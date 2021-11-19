@@ -4,3 +4,9 @@ https://www.programiz.com/dsa/shell-sort
 https://nguyenvanhieu.vn/thuat-toan-sap-xep-selection-sort/
 https://www.geeksforgeeks.org/insertion-sort/
 https://www.geeksforgeeks.org/bubble-sort/
+https://www.geeksforgeeks.org/shellsort/
+https://www.geeksforgeeks.org/heap-sort/
+https://www.geeksforgeeks.org/merge-sort/
+https://www.geeksforgeeks.org/quick-sort/
+https://www.geeksforgeeks.org/iterative-quick-sort/
+https://github.com/HaiDuc0147/sortingAlgorithm/blob/main/reportSort/Sort.cpp

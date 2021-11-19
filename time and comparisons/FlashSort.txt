@@ -1,0 +1,54 @@
+Part 0
+Time used for 0: 0.000342
+Comparisons used for 0: 98814
+Time used for 1: 0.000286
+Comparisons used for 1: 127992
+Time used for 2: 0.000267
+Comparisons used for 2: 110501
+Time used for 3: 0.000289
+Comparisons used for 3: 127968
+Part 1
+Time used for 0: 0.001074
+Comparisons used for 0: 301965
+Time used for 1: 0.000863
+Comparisons used for 1: 383992
+Time used for 2: 0.000806
+Comparisons used for 2: 331501
+Time used for 3: 0.000882
+Comparisons used for 3: 383962
+Part 2
+Time used for 0: 0.002341
+Comparisons used for 0: 479127
+Time used for 1: 0.001465
+Comparisons used for 1: 639992
+Time used for 2: 0.001302
+Comparisons used for 2: 552501
+Time used for 3: 0.001456
+Comparisons used for 3: 639962
+Part 3
+Time used for 0: 0.00513
+Comparisons used for 0: 1019156
+Time used for 1: 0.002968
+Comparisons used for 1: 1279992
+Time used for 2: 0.002797
+Comparisons used for 2: 1105001
+Time used for 3: 0.003038
+Comparisons used for 3: 1279962
+Part 4
+Time used for 0: 0.017335
+Comparisons used for 0: 3047744
+Time used for 1: 0.00882
+Comparisons used for 1: 3839992
+Time used for 2: 0.009906
+Comparisons used for 2: 3315001
+Time used for 3: 0.008703
+Comparisons used for 3: 3839958
+Part 5
+Time used for 0: 0.036041
+Comparisons used for 0: 4843142
+Time used for 1: 0.014181
+Comparisons used for 1: 6399992
+Time used for 2: 0.013324
+Comparisons used for 2: 5525001
+Time used for 3: 0.014624
+Comparisons used for 3: 6399962
