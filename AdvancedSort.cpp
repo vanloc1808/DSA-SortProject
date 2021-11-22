@@ -158,112 +158,57 @@ long long mergeSortWithCounting(int* a, int n) {
     return cnt;
 }
 
-int partition(int* a, int left, int right) {
-    int pivot = a[left];
-    int i = left;
-    int j = right + 1;
-
-    do {
-        do {
-            i++;
-        } while (a[i] < pivot && i < right);
-
-        do {
-            j--;
-        } while (a[j] > pivot && j > left);
-
-        _swap(a[i], a[j]);
-    } while (i < j);
-
-    _swap(a[i], a[j]);
-
-    _swap(a[left], a[j]);
-
-    return j;
-}
-
 void quickSort(int* a, int left, int right) {
-    int* stack = new int[right - left + 1];
-
-    int top = -1;
-
-    stack[++top] = left;
-    stack[++top] = right;
-
-    while (top >= 0) {
-        right = stack[top--];
-        left = stack[top--];
-
-        int pivot = partition(a, left, right);
-
-        if (pivot - 1 > left) {
-            stack[++top] = left;
-            stack[++top] = pivot - 1;
+    int i = left, j = right;
+    int pivot = a[(left + right) / 2];
+    while (i <= j) {
+        while (a[i] < pivot) {
+            i++;
         }
-
-        if (pivot + 1 < right) {
-            stack[++top] = pivot + 1;
-            stack[++top] = right;
+        while (a[j] > pivot) {
+            j--;
+        }
+        if (i <= j) {
+            _swap(a[i], a[j]);
+            i++;
+            j--;
         }
     }
 
-    delete[] stack;
-}
-
-
-long long partitionWithCounting(int* a, int left, int right, long long& cnt) {
-
-    int pivot = a[left];
-    int i = left;
-    int j = right + 1;
-
-    do {
-        do {
-            i++;
-        } while (++cnt && a[i] < pivot && ++cnt && ++i < right);
-
-        do {
-            j--;
-        } while (++cnt && a[j] > pivot && ++cnt && j > left);
-
-        _swap(a[i], a[j]);
-    } while (++cnt && i < j);
-
-    _swap(a[i], a[j]);
-
-    _swap(a[left], a[j]);
-
-    return j;
+    if (left < j) {
+        quickSort(a, left, j);
+    }
+    if (i < right) {
+        quickSort(a, i, right);
+    }
 }
 
 long long quickSortWithCounting(int* a, int left, int right) {
     long long cnt = 0;
 
-    int* stack = new int[right - left + 1];
-
-    int top = -1;
-
-    stack[++top] = left;
-    stack[++top] = right;
-
-    while (++cnt && top >= 0) {
-        right = stack[top--];
-        left = stack[top--];
-
-        int pivot = partitionWithCounting(a, left, right, cnt);
-
-        if (++cnt && pivot - 1 > left) {
-            stack[++top] = left;
-            stack[++top] = pivot - 1;
+    int i = left, j = right;
+    int pivot = a[(left + right) / 2];
+    while (++cnt && i <= j) {
+        while (++cnt && a[i] < pivot) {
+            i++;
         }
-
-        if (++cnt && pivot + 1 < right) {
-            stack[++top] = pivot + 1;
-            stack[++top] = right;
+        while (++cnt && a[j] > pivot) {
+            j--;
+        }
+        if (++cnt && i <= j) {
+            _swap(a[i], a[j]);
+            i++;
+            j--;
         }
     }
 
-    delete[] stack;
+    if (++cnt && left < j) {
+        cnt += quickSortWithCounting(a, left, j);
+    }
+    
+    if (++cnt && i < right) {
+        cnt += quickSortWithCounting(a, i, right);
+    }
 
     return cnt;
 }
