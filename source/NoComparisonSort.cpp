@@ -2,6 +2,7 @@
 #include "BasicSort.h"
 #include "NoComparisonSort.h"
 
+//from theory lectures of Dr. Nguyen Thanh Phuong
 void countingSort(int* a, int n) {
     int* c = new int[n];
     for (int i = 0; i < n; i++) {

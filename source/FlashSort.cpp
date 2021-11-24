@@ -8,7 +8,7 @@ void flashSort(int* a, int n)
 {
 	int minVal = a[0];
 	int maxIdx = 0;
-	int m = int(0.45 * n);
+	int m = int(0.43 * n);
 	int* l = new int[m];
 	for (int i = 0; i < m; i++) {
         l[i] = 0;

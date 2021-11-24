@@ -1,6 +1,7 @@
 #include <iostream>
 #include "BasicSort.h"
 
+//https://nguyenvanhieu.vn/thuat-toan-sap-xep-selection-sort/
 void selectionSort(int* a, int n) {
     for (int i = 0; i < n - 1; i++) {
         int minIndex = i;
@@ -37,6 +38,7 @@ long long selectionSortWithCounting(int* a, int n) {
     return cnt;
 }
 
+//https://www.geeksforgeeks.org/insertion-sort/
 void insertionSort(int* a, int n) {
     for (int i = 1; i < n; i++) {
         int j = i - 1;
@@ -69,6 +71,7 @@ long long insertionSortWithCounting(int* a, int n) {
     return cnt;
 }
 
+//https://nguyenvanhieu.vn/thuat-toan-sap-xep-bubble-sort/
 void bubbleSort(int* a, int n) {
     for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {
@@ -93,6 +96,7 @@ long long bubbleSortWithCounting(int* a, int n) {
     return cnt;
 }
 
+//https://vi.wikipedia.org/wiki/Thu%E1%BA%ADt_to%C3%A1n_s%E1%BA%AFp_x%E1%BA%BFp_cocktail
 void shakerSort(int* a, int n) {
     int left = 0;
     int right = n - 1;
@@ -148,6 +152,7 @@ long long shakerSortWithCounting(int* a, int n) {
     return cnt;
 }
 
+//https://www.programiz.com/dsa/shell-sort
 void shellSort(int* a, int n) {
     int gap = n / 2;
 

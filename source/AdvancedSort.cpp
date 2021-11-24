@@ -21,6 +21,7 @@ void heapify(int* a, int n, int i) {
     }
 }
 
+//https://www.geeksforgeeks.org/heap-sort/
 void heapSort(int* a, int n) {
     for (int i = n / 2 - 1; i >= 0; i--) {
         heapify(a, n, i);
@@ -70,6 +71,7 @@ long long heapSortWithCounting(int* a, int n) {
     return cnt;
 }
 
+//https://www.geeksforgeeks.org/merge-sort/
 void mergeSort(int* a, int n) {
     if (n <= 1) {
         return;
@@ -158,6 +160,7 @@ long long mergeSortWithCounting(int* a, int n) {
     return cnt;
 }
 
+//https://github.com/HaiDuc0147/sortingAlgorithm/blob/main/reportSort/Sort.cpp
 void quickSort(int* a, int left, int right) {
     int i = left, j = right;
     int pivot = a[(left + right) / 2];
